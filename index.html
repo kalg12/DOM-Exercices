@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Crea un formulario que pida nombre, apellido, fecha de nacimiento, lugar de residencia y un botón de enviar -->
+    <form>
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" id="nombre">
+        <label for="apellido">Apellido</label>
+        <input type="text" name="apellido" id="apellido">
+        <label for="fecha">Fecha de nacimiento</label>
+        <input type="date" name="fecha" id="fecha">
+        <label for="lugar">Lugar de residencia</label>
+        <input type="text" name="lugar" id="lugar">
+        <button type="button" name="enviar" onclick="formulario()">Enviar</button>
+    </form>
+
+    <h2>Los datos capturados fueron:</h2>
+    <div id="id"></div>
+
+    <!-- Crea un scrip que recupere los valores del formulario y los ponga abajo-->
+    <script>
+        /* Los datos capturados en el formulario los meteremos en el HTML */
+        function formulario() {
+            let nombre = document.getElementById("nombre").value;
+            let apellido = document.getElementById("apellido").value;
+            let fecha = document.getElementById("fecha").value;
+            let lugar = document.getElementById("lugar").value;
+            let id = document.getElementById("id");
+
+            /* Creamos validadores para el campo nombre */
+            if (nombre == "") {
+                alert("El campo nombre no puede estar vacío");
+                return false;
+            } else if (nombre.length > 20) {
+                alert("El campo nombre no puede tener más de 20 caracteres");
+                return false;
+            } else if (!isNaN(nombre)) {
+                alert("El campo nombre no puede ser un número");
+                return false;
+            }
+
+            id.innerHTML = `Nombre: ${nombre} <br> Apellido: ${apellido} <br> Fecha de nacimiento: ${fecha} <br> Lugar de residencia: ${lugar}`;
+        }
+    </script>
+</body>
+
+</html>
